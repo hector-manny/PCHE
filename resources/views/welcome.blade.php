@@ -62,6 +62,8 @@
                 margin-bottom: 30px;
             }
         </style>
+
+        <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     </head>
     <body>
         <div class="flex-center position-ref full-height">
@@ -81,7 +83,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Laravel 7
                 </div>
 
                 <div class="links">
@@ -96,5 +98,9 @@
                 </div>
             </div>
         </div>
+        <div id="app">
+            <example-component></example-component>
+        </div>
+        <script src="{{ mix('js/app.js') }}"></script>
     </body>
 </html>
