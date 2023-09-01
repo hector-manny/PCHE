@@ -17,6 +17,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::get('login', 'AuthController@showLoginForm')->name('login');
+Route::post('login', 'AuthController@login');
+Route::post('logout', 'AuthController@logout')->name('logout');
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Ruta de registro
+Route::get('register', 'AuthController@showRegistrationForm')->name('register');
+Route::post('register', 'AuthController@register');
+
+// Rutas protegidas por autenticación
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+});
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+});
