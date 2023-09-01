@@ -18,17 +18,15 @@ Route::get('/', function () {
 });
 
 Route::get('login', 'AuthController@showLoginForm')->name('login');
-Route::post('login', 'AuthController@login');
-Route::post('logout', 'AuthController@logout')->name('logout');
+Route::post('login', 'AuthController@login')->name('ingresar');
+Route::get('logout', 'AuthController@logout')->name('salir');
 
 // Ruta de registro
-Route::get('register', 'AuthController@showRegistrationForm')->name('register');
-Route::post('register', 'AuthController@register');
+Route::get('registro', 'AuthController@showRegistrationForm')->name('register');
+Route::post('registrarse', 'AuthController@register')->name('registrarse');
 
 // Rutas protegidas por autenticación
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
-});
+//Route::get('dashboard', 'DashboardController@index')->name('dashboard')->middleware('auth');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
