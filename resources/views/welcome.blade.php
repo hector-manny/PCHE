@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -69,7 +68,7 @@
 </head>
 
 <body>
-    <div class="flex-center position-ref full-height">
+<!--     <div class="flex-center position-ref full-height">
         @if (Route::has('login'))
             <div class="top-right links">
                 @auth
@@ -100,9 +99,9 @@
                 <a href="https://github.com/laravel/laravel">GitHub</a>
             </div>
         </div>
-    </div>
+    </div> -->
     <div id="app">
-        <example-component></example-component>
+        <login-component></login-component>
     </div>
     <script src="{{ mix('js/app.js') }}"></script>
 </body>

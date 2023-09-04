@@ -1,22 +1,31 @@
-
-<div class="container">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <title>Login</title>
+</head>
+<body>
+    
+<div class="container mt-2" style="background-color:#D2D7DB">
+    <h1 class="text-center h1 font-weight-bold">Sistema C&#225;lculo Horas Extras</h1>
     <div class="row justify-content-center">
         <div class="col-md-6">
+            <img src="assets/img/latinMobile.png" alt="logo">
             <div class="card">
-                <div class="card-header">{{ __('Iniciar Sesión') }}</div>
-
                 <div class="card-body">
                     <form method="POST" action="{{ route('ingresar') }}">
                         @csrf
 
                         <div class="form-group">
-                            <label for="email">{{ __('Correo Electrónico') }}</label>
+                            <label for="email">{{ __('Usuario') }}</label>
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                             @error('email')
-                                <span class="invalid-feedback" role="alert">
+                                <div class="alert alert-danger" role="alert">
                                     <strong>{{ $message }}</strong>
-                                </span>
+                                </div>
                             @enderror
                         </div>
 
@@ -53,4 +62,6 @@
         </div>
     </div>
 </div>
-
+<script src="{{ mix('js/app.js') }}"></script>
+</body>
+</html>
