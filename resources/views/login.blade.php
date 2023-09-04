@@ -8,7 +8,7 @@
 </head>
 <body>
     
-<div class="container mt-2" style="background-color:#D2D7DB">
+<!-- <div class="container mt-2" style="background-color:#D2D7DB">
     <h1 class="text-center h1 font-weight-bold">Sistema C&#225;lculo Horas Extras</h1>
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -61,7 +61,10 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
+    <div id="app">
+        <login-component></login-component>
+    </div>
 <script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>

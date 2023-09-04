@@ -1925,7 +1925,41 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      objLogin: {
+        email: '',
+        password: ''
+      },
+      emptyEmail: false,
+      emptyPassword: false
+    };
+  },
+  mounted: function mounted() {},
+  methods: {
+    Ingresar: function Ingresar() {
+      if (this.objLogin.email == '') {
+        this.emptyEmail = true;
+      } else if (this.objLogin.password == '') {
+        this.emptyPassword = true;
+      } else {
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('login', this.objLogin, {
+          headers: {
+            'Content-type': 'application/json'
+          }
+        }).then(function (response) {
+          console.log(response.data);
+        })["catch"](function (error) {
+          console.log(error);
+        });
+      }
+    }
+  }
+});
 
 /***/ }),
 
@@ -1988,14 +2022,101 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _vm._m(0);
+  return _c("div", {
+    staticClass: "d-flex flex-row"
+  }, [_vm._m(0), _vm._v(" "), _c("div", {
+    staticClass: "d-flex flex-column justify-content-center align-items-center col-6"
+  }, [_c("img", {
+    attrs: {
+      src: "assets/img/latinMobile.png",
+      alt: "logo"
+    }
+  }), _vm._v(" "), _c("form", {
+    staticClass: "w-75"
+  }, [_c("div", {
+    staticClass: "form-group"
+  }, [_c("label", {
+    attrs: {
+      "for": "user"
+    }
+  }, [_vm._v("Usuario")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.objLogin.email,
+      expression: "objLogin.email"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text",
+      id: "user",
+      placeholder: "Escriba usuario",
+      "aria-describedby": "userHelp"
+    },
+    domProps: {
+      value: _vm.objLogin.email
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.objLogin, "email", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _vm.emptyEmail ? _c("small", {
+    staticClass: "form-text text-danger",
+    attrs: {
+      id: "userHelp"
+    }
+  }, [_vm._v("Ingrese Usuario")]) : _vm._e()]), _vm._v(" "), _c("div", {
+    staticClass: "form-group"
+  }, [_c("label", {
+    attrs: {
+      "for": "pass"
+    }
+  }, [_vm._v("Contraseña")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.objLogin.password,
+      expression: "objLogin.password"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "password",
+      id: "pass",
+      placeholder: "Escriba contraseña",
+      "aria-describedby": "passHelp"
+    },
+    domProps: {
+      value: _vm.objLogin.password
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.objLogin, "password", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _vm.emptyPassword ? _c("small", {
+    staticClass: "form-text text-danger",
+    attrs: {
+      id: "passHelp"
+    }
+  }, [_vm._v("Ingrese Contraseña")]) : _vm._e()]), _vm._v(" "), _c("div", {
+    staticClass: "form-group mb-0"
+  }, [_c("button", {
+    staticClass: "btn btn-primary btn-block",
+    attrs: {
+      type: "button"
+    },
+    on: {
+      click: _vm.Ingresar
+    }
+  }, [_vm._v("\n                    Iniciar Sesión\n                ")]), _vm._v(" "), _vm._m(1)])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "d-flex flex-row"
-  }, [_c("div", {
     staticClass: "d-flex flex-column col-6",
     staticStyle: {
       "background-color": "#1b4d76"
@@ -2029,15 +2150,7 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "carousel-item active"
   }, [_c("img", {
-    staticClass: "d-block w-100",
-    attrs: {
-      src: "assets/img/banner1.jpg",
-      alt: "First slide"
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "carousel-item"
-  }, [_c("img", {
-    staticClass: "d-block w-100",
+    staticClass: "d-block w-100 h-100",
     attrs: {
       src: "assets/img/banner2.avif",
       alt: "Second slide"
@@ -2045,7 +2158,7 @@ var staticRenderFns = [function () {
   })]), _vm._v(" "), _c("div", {
     staticClass: "carousel-item"
   }, [_c("img", {
-    staticClass: "d-block w-100",
+    staticClass: "d-block w-100 h-100",
     attrs: {
       src: "assets/img/banner3.jpg",
       alt: "Third slide"
@@ -2078,42 +2191,17 @@ var staticRenderFns = [function () {
     }
   }), _vm._v(" "), _c("span", {
     staticClass: "sr-only"
-  }, [_vm._v("Next")])])])]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex flex-column justify-content-center align-items-center col-6"
-  }, [_c("img", {
+  }, [_vm._v("Next")])])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "text-center mt-3"
+  }, [_vm._v("\n                    ¿Aún no tienes una cuenta? "), _c("a", {
     attrs: {
-      src: "assets/img/latinMobile.png",
-      alt: "logo"
+      href: "#"
     }
-  }), _vm._v(" "), _c("form", {
-    staticClass: "w-75"
-  }, [_c("div", {
-    staticClass: "form-group"
-  }, [_c("label", {
-    attrs: {
-      "for": "user"
-    }
-  }, [_vm._v("Usuario")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "text",
-      id: "user",
-      placeholder: "Escriba usuario"
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "form-group"
-  }, [_c("label", {
-    attrs: {
-      "for": "pass"
-    }
-  }, [_vm._v("Contraseña")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "password",
-      id: "pass",
-      placeholder: "Escriba contraseña"
-    }
-  })])])])]);
+  }, [_vm._v("Regístrate aquí")])]);
 }];
 render._withStripped = true;
 

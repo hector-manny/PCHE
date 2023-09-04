@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
-//Rutas para login
-Route::get('login', 'AuthController@showLoginForm')->name('login');
+});*/
+
+Route::get('/', 'AuthController@showLoginForm')->name('login');
 Route::post('login', 'AuthController@login')->name('ingresar');
 Route::get('logout', 'AuthController@logout')->name('salir');
 

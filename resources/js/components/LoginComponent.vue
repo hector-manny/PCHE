@@ -9,13 +9,10 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="d-block w-100" src="assets/img/banner1.jpg" alt="First slide">
+                        <img class="d-block w-100 h-100" src="assets/img/banner2.avif" alt="Second slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="assets/img/banner2.avif" alt="Second slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="assets/img/banner3.jpg" alt="Third slide">
+                        <img class="d-block w-100 h-100" src="assets/img/banner3.jpg" alt="Third slide">
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -33,18 +30,55 @@
             <form class="w-75">
                 <div class="form-group">
                     <label for="user">Usuario</label>
-                    <input type="text" class="form-control" id="user" placeholder="Escriba usuario">
+                    <input type="text" class="form-control" id="user" placeholder="Escriba usuario" aria-describedby="userHelp" v-model="objLogin.email">
+                    <small v-if="emptyEmail" id="userHelp" class="form-text text-danger">Ingrese Usuario</small>
                 </div>
                 <div class="form-group">
                     <label for="pass">Contraseña</label>
-                    <input type="password" class="form-control" id="pass" placeholder="Escriba contraseña">
+                    <input type="password" class="form-control" id="pass" placeholder="Escriba contraseña" aria-describedby="passHelp" v-model="objLogin.password">
+                    <small v-if="emptyPassword" id="passHelp" class="form-text text-danger">Ingrese Contraseña</small>
+                </div>
+                <div class="form-group mb-0">
+                    <button type="button" class="btn btn-primary btn-block" @click="Ingresar">
+                        Iniciar Sesión
+                    </button>
+
+                    <div class="text-center mt-3">
+                        ¿Aún no tienes una cuenta? <a href="#">Regístrate aquí</a>
+                    </div>
                 </div>
             </form>
         </div>
     </div>
 </template>
 <script>
-    export default {
 
+import axios from 'axios'
+    export default {
+        data() {
+            return {
+            objLogin: { email: '', password: '' },
+            emptyEmail: false,
+            emptyPassword: false,
+            }
+        },
+        mounted() {
+
+        },
+        methods: {
+            Ingresar(){
+                if(this.objLogin.email == ''){
+                    this.emptyEmail = true;
+                } else if(this.objLogin.password == ''){
+                    this.emptyPassword = true;
+                } else{
+                    axios.post('login', this.objLogin, { headers: {'Content-type': 'application/json' }}).then(response=>{
+                        console.log(response.data)
+                    }).catch(error=>{
+                        console.log(error)
+                    })
+                }
+            }
+        }
     }
 </script>
