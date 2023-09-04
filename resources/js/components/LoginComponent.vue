@@ -31,12 +31,10 @@
                 <div class="form-group">
                     <label for="user">Usuario</label>
                     <input type="text" class="form-control" id="user" placeholder="Escriba usuario" aria-describedby="userHelp" v-model="objLogin.email">
-                    <small v-if="emptyEmail" id="userHelp" class="form-text text-danger">Ingrese Usuario</small>
                 </div>
                 <div class="form-group">
                     <label for="pass">Contraseña</label>
                     <input type="password" class="form-control" id="pass" placeholder="Escriba contraseña" aria-describedby="passHelp" v-model="objLogin.password">
-                    <small v-if="emptyPassword" id="passHelp" class="form-text text-danger">Ingrese Contraseña</small>
                 </div>
                 <div class="form-group mb-0">
                     <button type="button" class="btn btn-primary btn-block" @click="Ingresar">
@@ -48,6 +46,14 @@
                     </div>
                 </div>
             </form>
+            <Transition name="fade">
+                <div v-if="emptyEmail" class="alert alert-danger w-50" role="alert">
+                    <p class="text-center">Ingrese Usuario</p>
+                </div>
+                <div v-if="emptyPassword" class="alert alert-danger w-50" role="alert">
+                    <p class="text-center">Ingrese Contraseña</p>
+                </div>
+            </Transition>
         </div>
     </div>
 </template>
@@ -74,6 +80,7 @@ import axios from 'axios'
                 } else{
                     axios.post('login', this.objLogin, { headers: {'Content-type': 'application/json' }}).then(response=>{
                         console.log(response.data)
+                        this.$router.push('/dashboard')
                     }).catch(error=>{
                         console.log(error)
                     })
@@ -82,3 +89,12 @@ import axios from 'axios'
         }
     }
 </script>
+<style>
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s;
+    }
+
+    .fade-enter, .fade-leave-to{
+        opacity: 0;
+    }
+</style>

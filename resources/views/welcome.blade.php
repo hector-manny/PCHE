@@ -101,7 +101,7 @@
         </div>
     </div> -->
     <div id="app">
-
+        <h1 class="text-center text-success">Inicio de Sesión</h1>
     </div>
     <script src="{{ mix('js/app.js') }}"></script>
 </body>
