@@ -24,6 +24,18 @@ class AuthController extends Controller
         return redirect()->back()->withErrors(['usuario' => 'Credenciales inválidas']);
     }
 
+    /* public function login(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::guard('web')->attempt($credentials)) {
+            return response()->json(['message' => 'Inicio de sesión exitoso'], 200);
+        }
+
+        return response()->json(['message' => 'Credenciales inválidas'], 401);
+
+    }*/
+
     public function logout()
     {
         Auth::logout();

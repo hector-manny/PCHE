@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+//Rutas para login
 Route::get('login', 'AuthController@showLoginForm')->name('login');
 Route::post('login', 'AuthController@login')->name('ingresar');
 Route::get('logout', 'AuthController@logout')->name('salir');
@@ -25,7 +25,13 @@ Route::get('logout', 'AuthController@logout')->name('salir');
 Route::get('registro', 'AuthController@showRegistrationForm')->name('register');
 Route::post('registrarse', 'AuthController@register')->name('registrarse');
 
-// Rutas protegidas por autenticación
+//Rutas para empresa
+Route::get('empresa', 'EmpresaController@create')->name('createdata');
+Route::get('empresas', 'EmpresaController@allempresas')->name('empresas');;
+
+//Rutas para area
+Route::get('areas', 'AreaController@index')->name('areas');;
+Route::get('areas/empresa', 'AreaController@areasByEmpresa')->name('areasbyempresa');
 //Route::get('dashboard', 'DashboardController@index')->name('dashboard')->middleware('auth');
 
 Route::group(['middleware' => 'auth'], function () {
