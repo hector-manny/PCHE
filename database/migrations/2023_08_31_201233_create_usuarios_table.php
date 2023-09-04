@@ -19,7 +19,7 @@ class CreateUsuariosTable extends Migration
             $table->string('apellidos');
             $table->string('cargo')->nullable();
             $table->string('empresa')->nullable();
-            $table->string('correo')->unique();
+            $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
