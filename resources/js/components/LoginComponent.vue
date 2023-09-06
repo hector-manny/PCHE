@@ -1,6 +1,6 @@
 <template>
-    <div class="d-flex flex-row">
-        <div class="d-flex flex-column col-6" style="background-color: #1b4d76;">
+    <div class="d-flex align-items-stretch">
+        <div class="d-flex flex-column col-5 d-xs-none" style="background-color: #1b4d76;">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -9,10 +9,10 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="d-block w-100 h-100" src="assets/img/banner2.avif" alt="Second slide">
+                        <img class="d-block w-100" src="assets/img/banner2.avif" alt="Second slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100 h-100" src="assets/img/banner3.jpg" alt="Third slide">
+                        <img class="d-block w-100" src="assets/img/banner3.jpg" alt="Third slide">
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -25,7 +25,7 @@
                 </a>
             </div>
         </div>
-        <div class="d-flex flex-column justify-content-center align-items-center col-6">
+        <div class="bg-white d-flex flex-column justify-content-center align-items-center col-7 col-xs-12">
             <img src="assets/img/latinMobile.png" alt="logo">
             <form class="w-75">
                 <div class="form-group">
@@ -40,10 +40,6 @@
                     <button type="button" class="btn btn-primary btn-block" @click="Ingresar">
                         Iniciar Sesión
                     </button>
-
-                    <div class="text-center mt-3">
-                        ¿Aún no tienes una cuenta? <a href="#">Regístrate aquí</a>
-                    </div>
                 </div>
             </form>
             <Transition name="fade">
@@ -78,12 +74,13 @@ import axios from 'axios'
                 } else if(this.objLogin.password == ''){
                     this.emptyPassword = true;
                 } else{
-                    axios.post('login', this.objLogin, { headers: {'Content-type': 'application/json' }}).then(response=>{
+                    this.$router.push('/dashboard')
+                    /* axios.post('login', this.objLogin, { headers: {'Content-type': 'application/json' }}).then(response=>{
                         console.log(response.data)
                         this.$router.push('/dashboard')
                     }).catch(error=>{
                         console.log(error)
-                    })
+                    }) */
                 }
             }
         }

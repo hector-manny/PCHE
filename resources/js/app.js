@@ -4,12 +4,12 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-const { default: VueRouter } = require('vue-router');
+//const { default: VueRouter } = require('vue-router');
 
 require('./bootstrap');
 
 window.Vue = require('vue');
-window.VueRouter = require('vue-router');
+import VueRouter from 'vue-router';
 
 /**
  * The following block of code may be used to automatically register your
@@ -22,8 +22,9 @@ window.VueRouter = require('vue-router');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('login-component', require('./components/LoginComponent.vue').default);
+//Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+//Vue.component('login-component', require('./components/LoginComponent.vue').default);
+//Vue.component('dashboard-component', require('./components/DashboardComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -32,6 +33,22 @@ Vue.component('login-component', require('./components/LoginComponent.vue').defa
  */
 Vue.use(VueRouter);
 
+const routes =[
+    {
+        path:'/', 
+        component: require('./components/LoginComponent.vue').default
+    },
+    {
+        path:'/dashboard', 
+        component: require('./components/DashboardComponent.vue').default
+    }
+]
+
+const router = new VueRouter({
+    routes: routes,
+    mode: "history"
+})
+
 const app = new Vue({
-    el: '#app',
-});
+    router
+}).$mount('#app');
