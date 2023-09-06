@@ -26,13 +26,17 @@ Route::get('registro', 'AuthController@showRegistrationForm')->name('register');
 Route::post('registrarse', 'AuthController@register')->name('registrarse');
 
 //Rutas para empresa
-Route::get('empresa', 'EmpresaController@create')->name('createdata');
+Route::post('empresa', 'EmpresaController@create')->name('createdata');
 Route::get('empresas', 'EmpresaController@allempresas')->name('empresas');;
 
 //Rutas para area
-Route::get('areas', 'AreaController@index')->name('areas');;
+Route::get('areas', 'AreaController@index')->name('areas');
 Route::get('areas/empresa', 'AreaController@areasByEmpresa')->name('areasbyempresa');
 //Route::get('dashboard', 'DashboardController@index')->name('dashboard')->middleware('auth');
+
+//Rutas para empleado
+Route::get('empleados', 'EmpleadoController@allempleados')->name('empleados');
+
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');

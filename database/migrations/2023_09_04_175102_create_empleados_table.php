@@ -18,11 +18,11 @@ class CreateEmpleadosTable extends Migration
             $table->string('nombres');
             $table->string('apellidos');
             $table->string('cargo')->nullable();
-            $table->string('empresa')->nullable();
             $table->string('correo')->unique();
-
-
+            $table->unsignedBigInteger('area_id');
             $table->timestamps();
+
+            $table->foreign('area_id')->references('id')->on('areas');
         });
     }
 
