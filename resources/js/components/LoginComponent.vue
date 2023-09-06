@@ -1,33 +1,32 @@
 <template>
-    <div class="d-flex align-items-stretch">
-        <div class="d-flex flex-column col-5 d-xs-none" style="background-color: #1b4d76;">
+    <div class="d-flex">
+        <div class="d-flex flex-column col-5 paddingOff" style="background-color: #1b4d76;">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="d-block w-100" src="assets/img/banner2.avif" alt="Second slide">
+                        <img class="d-block w-100 effect" src="assets/img/banner4.jpg" alt="Second slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="assets/img/banner3.jpg" alt="Third slide">
+                        <img class="d-block w-100 effect" src="assets/img/banner5.jpg" alt="Third slide">
                     </div>
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+<!--                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
                 </a>
                 <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
-                </a>
+                </a> -->
             </div>
         </div>
-        <div class="bg-white d-flex flex-column justify-content-center align-items-center col-7 col-xs-12">
-            <img src="assets/img/latinMobile.png" alt="logo">
-            <form class="w-75">
+        <div class="bg-white d-flex flex-column justify-content-center align-items-center col-7 paddingOff">
+            <img src="assets/img/latinMobile.png" alt="logo" class="w-25">
+            <form class="w-50">
                 <div class="form-group">
                     <label for="user">Usuario</label>
                     <input type="text" class="form-control" id="user" placeholder="Escriba usuario" aria-describedby="userHelp" v-model="objLogin.email">
@@ -93,5 +92,14 @@ import axios from 'axios'
 
     .fade-enter, .fade-leave-to{
         opacity: 0;
+    }
+
+    .effect{
+        filter: opacity(.5);
+    }
+    
+    .paddingOff{
+        padding-left: 0px;
+        padding-right: 0px;
     }
 </style>

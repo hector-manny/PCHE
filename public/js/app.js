@@ -1996,16 +1996,17 @@ var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "d-flex align-items-stretch"
+    staticClass: "d-flex"
   }, [_vm._m(0), _vm._v(" "), _c("div", {
-    staticClass: "bg-white d-flex flex-column justify-content-center align-items-center col-7 col-xs-12"
+    staticClass: "bg-white d-flex flex-column justify-content-center align-items-center col-7 paddingOff"
   }, [_c("img", {
+    staticClass: "w-25",
     attrs: {
       src: "assets/img/latinMobile.png",
       alt: "logo"
     }
   }), _vm._v(" "), _c("form", {
-    staticClass: "w-75"
+    staticClass: "w-50"
   }, [_c("div", {
     staticClass: "form-group"
   }, [_c("label", {
@@ -2074,7 +2075,7 @@ var render = function render() {
     on: {
       click: _vm.Ingresar
     }
-  }, [_vm._v("\n                    Iniciar Sesión\n                ")])])]), _vm._v(" "), _c("Transition", {
+  }, [_vm._v("\n                        Iniciar Sesión\n                    ")])])]), _vm._v(" "), _c("Transition", {
     attrs: {
       name: "fade"
     }
@@ -2098,7 +2099,7 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "d-flex flex-column col-5 d-xs-none",
+    staticClass: "d-flex flex-column col-5 paddingOff",
     staticStyle: {
       "background-color": "#1b4d76"
     }
@@ -2121,58 +2122,25 @@ var staticRenderFns = [function () {
       "data-target": "#carouselExampleIndicators",
       "data-slide-to": "1"
     }
-  }), _vm._v(" "), _c("li", {
-    attrs: {
-      "data-target": "#carouselExampleIndicators",
-      "data-slide-to": "2"
-    }
   })]), _vm._v(" "), _c("div", {
     staticClass: "carousel-inner"
   }, [_c("div", {
     staticClass: "carousel-item active"
   }, [_c("img", {
-    staticClass: "d-block w-100",
+    staticClass: "d-block w-100 effect",
     attrs: {
-      src: "assets/img/banner2.avif",
+      src: "assets/img/banner4.jpg",
       alt: "Second slide"
     }
   })]), _vm._v(" "), _c("div", {
     staticClass: "carousel-item"
   }, [_c("img", {
-    staticClass: "d-block w-100",
+    staticClass: "d-block w-100 effect",
     attrs: {
-      src: "assets/img/banner3.jpg",
+      src: "assets/img/banner5.jpg",
       alt: "Third slide"
     }
-  })])]), _vm._v(" "), _c("a", {
-    staticClass: "carousel-control-prev",
-    attrs: {
-      href: "#carouselExampleIndicators",
-      role: "button",
-      "data-slide": "prev"
-    }
-  }, [_c("span", {
-    staticClass: "carousel-control-prev-icon",
-    attrs: {
-      "aria-hidden": "true"
-    }
-  }), _vm._v(" "), _c("span", {
-    staticClass: "sr-only"
-  }, [_vm._v("Previous")])]), _vm._v(" "), _c("a", {
-    staticClass: "carousel-control-next",
-    attrs: {
-      href: "#carouselExampleIndicators",
-      role: "button",
-      "data-slide": "next"
-    }
-  }, [_c("span", {
-    staticClass: "carousel-control-next-icon",
-    attrs: {
-      "aria-hidden": "true"
-    }
-  }), _vm._v(" "), _c("span", {
-    staticClass: "sr-only"
-  }, [_vm._v("Next")])])])]);
+  })])])])]);
 }];
 render._withStripped = true;
 
@@ -6557,7 +6525,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\n    transition: opacity .5s;\n}\n.fade-enter, .fade-leave-to{\n    opacity: 0;\n}\n", ""]);
+exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\n    transition: opacity .5s;\n}\n.fade-enter, .fade-leave-to{\n    opacity: 0;\n}\n.effect{\n    filter: opacity(.5);\n}\n.paddingOff{\n    padding-left: 0px;\n    padding-right: 0px;\n}\n", ""]);
 
 // exports
 
@@ -53460,7 +53428,7 @@ var routes = [{
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   routes: routes,
-  mode: "history"
+  mode: "hash"
 });
 var app = new Vue({
   router: router
