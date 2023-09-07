@@ -22,7 +22,7 @@ Route::post('login', 'AuthController@login')->name('ingresar');
 Route::get('logout', 'AuthController@logout')->name('salir');
 
 // Ruta de registro
-//Route::get('registro', 'AuthController@showRegistrationForm')->name('register');
+Route::get('registroTemp', 'AuthController@showRegistrationForm')->name('register');
 Route::post('registrarse', 'AuthController@register')->name('registrarse');
 
 //Rutas para empresa

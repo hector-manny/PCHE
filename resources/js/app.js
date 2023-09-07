@@ -10,6 +10,9 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 import VueRouter from 'vue-router';
+import Toast from 'vue-toastification';
+
+import "vue-toastification/dist/index.css"
 
 /**
  * The following block of code may be used to automatically register your
@@ -32,6 +35,12 @@ import VueRouter from 'vue-router';
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 Vue.use(VueRouter);
+
+const options = {
+
+};
+
+Vue.use(Toast, options);
 
 const routes =[
     {

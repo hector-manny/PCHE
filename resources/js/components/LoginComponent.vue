@@ -41,14 +41,6 @@
                     </button>
                 </div>
             </form>
-            <Transition name="fade">
-                <div v-if="emptyEmail" class="alert alert-danger w-50" role="alert">
-                    <p class="text-center">Ingrese usuario</p>
-                </div>
-                <div v-if="emptyPassword" class="alert alert-danger w-50" role="alert">
-                    <p class="text-center">Ingrese contraseña</p>
-                </div>
-            </Transition>
         </div>
     </div>
 </template>
@@ -58,9 +50,8 @@ import axios from 'axios'
     export default {
         data() {
             return {
-            objLogin: { email: '', password: '' },
-            emptyEmail: false,
-            emptyPassword: false,
+            objLogin: { email: '', password: '' }
+
             }
         },
         mounted() {
@@ -69,17 +60,37 @@ import axios from 'axios'
         methods: {
             Ingresar(){
                 if(this.objLogin.email == ''){
-                    this.emptyEmail = true;
+                    this.$toast.error('Ingrese Usuario',{
+                        timeout: 3000,
+                        position: 'bottom-center',
+                        icon: true
+                    });
                 } else if(this.objLogin.password == ''){
-                    this.emptyPassword = true;
+                    this.$toast.error('Ingrese Contraseña',{
+                        timeout: 3000,
+                        position: 'bottom-center',
+                        icon: true
+                    });
                 } else{
-                    this.$router.push('/business');
-                    /* axios.post('login', this.objLogin, { headers: {'Content-type': 'application/json' }}).then(response=>{
-                        console.log(response.data)
-                        this.$router.push('/dashboard')
+                    axios.post('login', this.objLogin, { headers: {'Content-type': 'application/json' }}).then(response=>{
+                        if(response.status === 200){
+                            localStorage.setItem('user',JSON.stringify(response.data.Usuario));
+                            this.$toast.success(response.data.message,{
+                                timeout: 3000,
+                                position: 'top-right',
+                                icon: true,
+                            });
+                            this.$router.push('/business')
+                        }
                     }).catch(error=>{
-                        console.log(error)
-                    })*/
+                        if(error.response.status === 401){
+                            this.$toast.error(error.response.data.message,{
+                                timeout: 3000,
+                                position: 'bottom-center',
+                                icon: true
+                            })
+                        }
+                    })
                 }
             }
         }
