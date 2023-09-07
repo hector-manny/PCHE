@@ -19,4 +19,8 @@ class Empleado extends Model
     public function usuario(){
         return $this->belongsTo(Usuario::class);
     }
+
+    public function horario(){
+        return $this->hasOne(Horario::class);
+    }
 }
