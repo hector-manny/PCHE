@@ -1,6 +1,6 @@
 <template>
-    <div class="d-flex">
-        <div class="d-flex flex-column col-5 paddingOff" style="background-color: #1b4d76;">
+    <div class="d-flex justify-content-center align-items-center" style="margin-top: 15%;">
+<!--         <div class="d-flex flex-column col-5 paddingOff" style="background-color: #1b4d76;">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -14,17 +14,17 @@
                         <img class="d-block w-100 effect" src="assets/img/banner5.jpg" alt="Third slide">
                     </div>
                 </div>
-<!--                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
                 </a>
                 <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
-                </a> -->
+                </a>
             </div>
-        </div>
-        <div class="bg-white d-flex flex-column justify-content-center align-items-center col-7 paddingOff">
+        </div> -->
+        <div class="bg-white d-flex flex-column justify-content-center align-items-center col-12 col-sm-12 col-md-7 col-lg-7 paddingOff">
             <img src="assets/img/latinMobile.png" alt="logo" class="w-25">
             <form class="w-50">
                 <div class="form-group">
@@ -37,16 +37,16 @@
                 </div>
                 <div class="form-group mb-0">
                     <button type="button" class="btn btn-primary btn-block" @click="Ingresar">
-                        Iniciar Sesión
+                        Iniciar sesión
                     </button>
                 </div>
             </form>
             <Transition name="fade">
                 <div v-if="emptyEmail" class="alert alert-danger w-50" role="alert">
-                    <p class="text-center">Ingrese Usuario</p>
+                    <p class="text-center">Ingrese usuario</p>
                 </div>
                 <div v-if="emptyPassword" class="alert alert-danger w-50" role="alert">
-                    <p class="text-center">Ingrese Contraseña</p>
+                    <p class="text-center">Ingrese contraseña</p>
                 </div>
             </Transition>
         </div>
@@ -73,13 +73,13 @@ import axios from 'axios'
                 } else if(this.objLogin.password == ''){
                     this.emptyPassword = true;
                 } else{
-                    this.$router.push('/business')
+                    this.$router.push('/business');
                     /* axios.post('login', this.objLogin, { headers: {'Content-type': 'application/json' }}).then(response=>{
                         console.log(response.data)
                         this.$router.push('/dashboard')
                     }).catch(error=>{
                         console.log(error)
-                    }) */
+                    })*/
                 }
             }
         }

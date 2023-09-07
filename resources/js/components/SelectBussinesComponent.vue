@@ -17,8 +17,8 @@
                         class="col-9 form-control"
                         style="height: 50px"
                     >
-                        <option value="opcion1">Opción 1</option>
-                        <option value="opcion2">Opción 2</option>
+                        <option value="opcion1">LATMOBILE</option>
+                        <option value="opcion2">O2</option>
                         <option value="opcion3">Opción 3</option>
                     </select>
                 </div>

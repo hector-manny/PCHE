@@ -46,6 +46,10 @@ const routes =[
         path:'/business',
         component: require('./components/SelectBussinesComponent.vue').default
     },
+    {
+        path:'/registro',
+        component: require('./components/RegistroUsuarioComponent.vue').default
+    }
 ]
 
 const router = new VueRouter({
