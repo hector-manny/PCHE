@@ -73,7 +73,7 @@ import axios from 'axios'
                 } else if(this.objLogin.password == ''){
                     this.emptyPassword = true;
                 } else{
-                    this.$router.push('/dashboard')
+                    this.$router.push('/business')
                     /* axios.post('login', this.objLogin, { headers: {'Content-type': 'application/json' }}).then(response=>{
                         console.log(response.data)
                         this.$router.push('/dashboard')

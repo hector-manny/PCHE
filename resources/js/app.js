@@ -41,7 +41,11 @@ const routes =[
     {
         path:'/dashboard', 
         component: require('./components/DashboardComponent.vue').default
-    }
+    },
+    {
+        path:'/business',
+        component: require('./components/SelectBussinesComponent.vue').default
+    },
 ]
 
 const router = new VueRouter({
