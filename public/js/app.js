@@ -2226,11 +2226,11 @@ var render = function render() {
     attrs: {
       value: "opcion1"
     }
-  }, [_vm._v("Opción 1")]), _vm._v(" "), _c("option", {
+  }, [_vm._v("LATMOBILE")]), _vm._v(" "), _c("option", {
     attrs: {
       value: "opcion2"
     }
-  }, [_vm._v("Opción 2")]), _vm._v(" "), _c("option", {
+  }, [_vm._v("O2")]), _vm._v(" "), _c("option", {
     attrs: {
       value: "opcion3"
     }
