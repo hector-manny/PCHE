@@ -2050,14 +2050,38 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+ // Importa Axios
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      selectedOption: "Seleccione La empresa" // Opción predeterminada seleccionada
+      selectedOption: "",
+      // Opción predeterminada seleccionada
+      empresas: [] // Almacenar las empresas cargadas desde el endpoint
     };
   },
-
+  created: function created() {
+    // Cargar las empresas desde el endpoint al cargar el componente
+    this.fetchEmpresas();
+  },
   methods: {
+    fetchEmpresas: function fetchEmpresas() {
+      var _this = this;
+      // Llamar al endpoint de empresas utilizando Axios (cambia this.$axios a axios)
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/empresas").then(function (response) {
+        // Formatear las empresas como 'id-nombre' y almacenarlas en 'empresas'
+        _this.empresas = response.data.map(function (empresa) {
+          return {
+            id: empresa.id,
+            nombre: empresa.nombre
+          };
+        });
+      })["catch"](function (error) {
+        console.error("Error al cargar empresas:", error);
+      });
+    },
     seleccionar: function seleccionar() {
       // Manejar la acción de selección aquí
       alert("Opción seleccionada: " + this.selectedOption);
@@ -2556,27 +2580,29 @@ var render = function render() {
     }
   }, [_c("option", {
     attrs: {
-      value: "opcion1"
+      value: ""
     }
-  }, [_vm._v("LATMOBILE")]), _vm._v(" "), _c("option", {
-    attrs: {
-      value: "opcion2"
-    }
-  }, [_vm._v("O2")]), _vm._v(" "), _c("option", {
-    attrs: {
-      value: "opcion3"
-    }
-  }, [_vm._v("Opción 3")])])]), _vm._v(" "), _c("br"), _vm._v(" "), _c("div", {
+  }, [_vm._v("Seleccione La empresa")]), _vm._v(" "), _vm._l(_vm.empresas, function (empresa) {
+    return _c("option", {
+      key: empresa.id,
+      domProps: {
+        value: empresa.id
+      }
+    }, [_vm._v("\n            " + _vm._s(empresa.id) + " - " + _vm._s(empresa.nombre) + "\n          ")]);
+  })], 2)]), _vm._v(" "), _c("br"), _vm._v(" "), _c("div", {
     staticClass: "col-12 d-flex justify-content-center"
   }, [_c("button", {
     staticClass: "btn btn-primary btn-block",
     staticStyle: {
       width: "25%"
     },
+    attrs: {
+      type: "button"
+    },
     on: {
       click: _vm.seleccionar
     }
-  }, [_vm._v("\n                    Seleccionar\n                ")])])])])]);
+  }, [_vm._v("\n          Seleccionar\n        ")])])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -7015,7 +7041,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.center-image[data-v-ffc1ca40] {\r\n    text-align: center;\n}\r\n\r\n/* Estilos adicionales según tus preferencias */\r\n", ""]);
+exports.push([module.i, "\n.center-image[data-v-ffc1ca40] {\r\n  text-align: center;\n}\r\n\r\n/* Estilos adicionales según tus preferencias */\r\n", ""]);
 
 // exports
 
