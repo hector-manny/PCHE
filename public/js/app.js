@@ -2107,7 +2107,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     seleccionar: function seleccionar() {
       // Manejar la acción de selección aquí
-      alert("Opción seleccionada: " + this.selectedOption);
+      this.$router.push('/dashboard');
     }
   }
 });

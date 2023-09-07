@@ -74,10 +74,10 @@ export default {
     },
     seleccionar() {
       // Manejar la acción de selección aquí
-      alert("Opción seleccionada: " + this.selectedOption);
+      this.$router.push('/dashboard');
     },
   },
-};
+}
 </script>
 
 <style scoped>
