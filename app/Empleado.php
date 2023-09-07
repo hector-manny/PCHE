@@ -15,4 +15,8 @@ class Empleado extends Model
     {
         return $this->belongsTo(Area::class, 'area_id');
     }
+
+    public function usuario(){
+        return $this->belongsTo(Usuario::class);
+    }
 }

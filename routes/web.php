@@ -36,7 +36,7 @@ Route::get('areas/empresa', 'AreaController@areasByEmpresa')->name('areasbyempre
 
 //Rutas para empleado
 Route::get('empleados', 'EmpleadoController@allempleados')->name('empleados');
-
+Route::post('empleados/save', 'EmpleadoController@store')->name('empleados_save');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');

@@ -73,6 +73,6 @@ class AuthController extends Controller
         Auth::login($usuario);
 
         // Redirigir al usuario a la página deseada después del registro
-        return redirect()->route('dashboard');
+        return response()->json(['message' => 'Usuario creado con exito'], 201);
     }
 }
