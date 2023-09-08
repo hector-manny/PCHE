@@ -42,6 +42,9 @@ Route::get('empleados/eliminar/{id}','EmpleadoController@eliminarEmpleados')->na
 Route::get('empleados/busqueda/{nombre}','EmpleadoController@empleadosBusquedaNombre')->name('empleadosBusqueda');
 Route::get('empleados/actualizar', 'EmpleadoController@actualizarEmpleados')->name('empleadosActualizar');
 Route::get('empleados/crear','EmpleadoController@crearEmpleado')->name('empleadoCrear');
+Route::get('empleados/crear','EmpleadoController@crearEmpleado')->name('empleadoCrear');
+Route::get('empleados/busqueda/{nombre}','EmpleadoController@empleadosBusquedaNombre')->name('empleadosBusqueda');
+Route::get('empleado_dui','EmpleadoController@empleadoByDui')->name('bucarEmpleado');
 
 
 Route::group(['middleware' => 'auth'], function () {

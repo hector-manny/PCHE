@@ -51,22 +51,15 @@ class AuthController extends Controller
     {
         // Validar datos de registro
         $this->validate($request, [
-            'name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'email' => 'required|string|max:255',
-            'password' => 'required|string|min:6',
-            'job_title' => 'nullable|string|max:255',
-            'company' => 'nullable|string|max:255',
+            'correo' => 'required|string|max:255',
+            'contrasenia' => 'required|string|min:6',
         ]);
 
         // Crear usuario
         $usuario = Usuario::create([
-            'nombres' => $request->input('name'),
-            'apellidos' => $request->input('last_name'),
-            'cargo' => $request->input('job_title'),
-            'empresa' => $request->input('company'),
-            'email' => $request->input('email'),
-            'password' => bcrypt($request->input('password')),
+            'email' => $request->input('correo'),
+            'password' => bcrypt($request->input('contrasenia')),
+            'empleado_id' => $request->input('idEmpleado'),
         ]);
 
         // Iniciar sesión automáticamente

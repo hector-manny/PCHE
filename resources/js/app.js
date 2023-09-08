@@ -44,11 +44,11 @@ Vue.use(Toast, options);
 
 const routes =[
     {
-        path:'/', 
+        path:'/',
         component: require('./components/LoginComponent.vue').default
     },
     {
-        path:'/dashboard', 
+        path:'/dashboard',
         component: require('./components/DashboardComponent.vue').default
     },
     {
@@ -58,7 +58,12 @@ const routes =[
     {
         path:'/registro',
         component: require('./components/RegistroUsuarioComponent.vue').default
+    },
+    {
+        path:'/activacionusuario',
+        component: require('./components/ActivacionUsuarioComponent.vue').default
     }
+
 ]
 
 const router = new VueRouter({
