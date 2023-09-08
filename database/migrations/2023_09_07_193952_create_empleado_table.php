@@ -19,6 +19,7 @@ class CreateEmpleadoTable extends Migration
             $table->string('apellidos');
             $table->string('cargo')->nullable();
             $table->string('dui', 10)->unique();
+            $table->string('email')->unique();
             $table->unsignedBigInteger('area_id');
             $table->timestamps();
 
