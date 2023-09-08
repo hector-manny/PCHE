@@ -8,7 +8,7 @@ class Empleado extends Model
 {
 
     protected $fillable = [
-        'nombres', 'apellidos', 'cargo', 'correo',
+        'nombres', 'apellidos', 'cargo', 'dui', 'email',
     ];
 
     public function area()
@@ -22,5 +22,9 @@ class Empleado extends Model
 
     public function horario(){
         return $this->hasOne(Horario::class);
+    }
+
+    public function horaExtras(){
+        return $this->hasMany(Empleado::class);
     }
 }
