@@ -35,7 +35,16 @@ class HorarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $horario = new Horario([
+            'turno' => $request->input('turno'),
+            'descripcion' => $request->input('descripcion'),
+            'horas_semana' => $request->input('horas_semana')
+
+        ]);
+
+        $horario->save();
+
+        return response()->json(['message' => 'Post creado exitosamente'], 201);
     }
 
     /**
