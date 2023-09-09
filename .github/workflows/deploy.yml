@@ -16,9 +16,6 @@ jobs:
       - name: Install dependencies
         run: composer install --ignore-platform-reqs
 
-      - name: Build assets
-        run: php artisan asset:generate
-
       - name: Deploy to server
         uses: appleboy/ssh-action@master
         with:
