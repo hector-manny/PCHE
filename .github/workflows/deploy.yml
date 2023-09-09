@@ -14,7 +14,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install dependencies
-        run: composer install
+        run: composer install --no-interaction --prefer-dist
 
       - name: Build assets
         run: php artisan asset:generate
@@ -29,7 +29,9 @@ jobs:
           script: |
             cd /var/www/html/PCHE
             git pull origin test # Cambia "main" por el nombre de la rama que deseas
-            composer install
+            composer require fzaninotto/faker:^1.9.3
+            composer update
+            composer install --no-interaction --prefer-dist
             php artisan migrate --force
             php artisan optimize:clear
             php artisan config:cache
