@@ -13,6 +13,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Install dependencies
+        run: composer install --ignore-platform-reqs
+
       - name: Build assets
         run: php artisan asset:generate
 
@@ -26,7 +29,7 @@ jobs:
           script: |
             cd /var/www/html/PCHE
             git pull origin test # Cambia "main" por el nombre de la rama que deseas
-            composer install --no-interaction --prefer-dist
+            composer install  --ignore-platform-reqs
             php artisan migrate --force
             php artisan optimize:clear
             php artisan config:cache
