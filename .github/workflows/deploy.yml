@@ -1,0 +1,35 @@
+name: Deploy to server PCHE
+
+on:
+  push:
+    branches:
+      - test # Cambia "main" por el nombre de la rama que deseas
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist
+
+      - name: Build assets
+        run: php artisan asset:generate
+
+      - name: Deploy to server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          script: |
+            cd /var/www/html/PCHE
+            git pull origin test # Cambia "main" por el nombre de la rama que deseas
+            composer install --no-interaction --prefer-dist
+            php artisan migrate --force
+            php artisan optimize:clear
+            php artisan config:cache
