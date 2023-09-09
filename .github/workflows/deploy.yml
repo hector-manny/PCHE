@@ -30,6 +30,5 @@ jobs:
             cd /var/www/html/PCHE
             git pull origin test # Cambia "main" por el nombre de la rama que deseas
             composer install  --ignore-platform-reqs
-            php artisan migrate --force
-            php artisan optimize:clear
+            php artisan migrate
             php artisan config:cache
