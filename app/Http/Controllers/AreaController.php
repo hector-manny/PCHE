@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Area;
 use Illuminate\Http\Request;
+use App\Empleado;
 
 class AreaController extends Controller
 {
@@ -32,13 +33,10 @@ class AreaController extends Controller
 
     public function horariosArea(Request $request)
     {
-        // Obtener el valor del parámetro de consulta 'idArea'
         $idArea = $request->input('idArea');
 
-        // Obtener todos los empleados en el área especificada
         $empleados = Empleado::where('area_id', $idArea)->get();
 
-        // Obtener los horarios únicos de los empleados en el área
         $horarios = $empleados->pluck('idHorario')->unique();
 
         return response()->json(['message' => 'Horarios disponibles para el área recuperados con éxito', 'horarios' => $horarios], 200);
