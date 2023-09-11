@@ -6,11 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class HoraExtra extends Model
 {
+    protected $table = 'horas_extra';
+
     protected $fillable = [
-        'nombres', 'apellidos', 'cargo', 'correo',
+        'id_empleado', 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo', 'total'
     ];
 
-    public function empleados(){
-        return $this->belongsTo(Empleado::class);
+    public function empleado(){
+        return $this->hasMany(Empleado::class);
     }
 }

@@ -42,7 +42,12 @@ Route::get('empleados/eliminar','EmpleadoController@eliminarEmpleados')->name('e
 Route::get('empleados/busqueda','EmpleadoController@empleadosBusquedaNombre')->name('empleadosBusqueda');
 Route::get('empleados/actualizar', 'EmpleadoController@actualizarEmpleados')->name('empleadosActualizar');
 Route::get('empleados/crear','EmpleadoController@crearEmpleado')->name('empleadoCrear');
+Route::get('empleados/crear','EmpleadoController@crearEmpleado')->name('empleadoCrear');
+Route::get('empleados/busqueda/{nombre}','EmpleadoController@empleadosBusquedaNombre')->name('empleadosBusqueda');
+Route::get('empleado_dui','EmpleadoController@empleadoByDui')->name('bucarEmpleado');
 
+Route::post('horas_extra/crear', 'HoraExtraCotroller@createHoraExtra')->name('horas_extra');
+Route::get('horas_extra', 'HoraExtraCotroller@allHoras')->name('horas_extra.all');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');

@@ -38,7 +38,6 @@ class EmpleadoController extends Controller
     public function empleadosBusquedaNombre(Request $request){
         try{
             $nombre = $request->input('nombres');
-
             $empleados = Empleado::where('nombres', 'LIKE', "%$nombre%")->get();
             return response()->json($empleados);
         }catch(\Exception $e){
@@ -121,4 +120,15 @@ class EmpleadoController extends Controller
         }
     }
 
+    public function empleadoByDui(Request $request){
+        try{
+
+            $duiEmpleado = $request->input('dui');
+
+            $empleado = Empleado::with('area.empresa')->where('dui', 'LIKE', "%$duiEmpleado%")->first();
+            return response()->json($empleado);
+        }catch(\Exception $e){
+            return response()->json(['ocurrio un error al obtener el empleado' => $e], 500);
+        }
+    }
 }
