@@ -70,6 +70,7 @@
           </div>
           <div class="floatCenter">
             <button type="button" class="btn btn-dark">GUARDAR CAMBIOS <i class="fa-solid fa-circle-plus"></i></button>
+            <button type="button" class="btn btn-dark my-3 text-uppercase">Cambiar contraseña <i class="fa-solid fa-pen-to-square"></i></button>
           </div>
         </form>
       </div>
