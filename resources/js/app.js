@@ -62,6 +62,13 @@ const routes =[
     {
         path:'/activacionusuario',
         component: require('./components/ActivacionUsuarioComponent.vue').default
+    },{
+        path:'/editarperfil',
+        component: require('./components/EditarPerfilComponent.vue').default
+    },
+    {
+        path:'/menu',
+        component: require('./components/MenuFlotanteComponent.vue').default
     }
 
 ]
