@@ -37,6 +37,7 @@ class EmpleadoController extends Controller
 
     public function empleadosBusquedaNombre($nombre){
         try{
+
             $empleados = Empleado::where('nombres', 'LIKE', "%$nombre%")->get();
             return response()->json($empleados);
         }catch(\Exception $e){
@@ -100,6 +101,18 @@ class EmpleadoController extends Controller
             return response()->json(['message' => 'Registro eliminado con éxito'], 200);
         } catch (\Exception $e) {
             return response()->json(['message' => 'Error al eliminar el registro'], 500);
+        }
+    }
+
+    public function empleadoByDui(Request $request){
+        try{
+
+            $duiEmpleado = $request->input('dui');
+
+            $empleado = Empleado::with('area.empresa')->where('dui', 'LIKE', "%$duiEmpleado%")->first();
+            return response()->json($empleado);
+        }catch(\Exception $e){
+            return response()->json(['ocurrio un error al obtener el empleado' => $e], 500);
         }
     }
 }
