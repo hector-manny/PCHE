@@ -13,7 +13,7 @@ class EmpleadoController extends Controller
         return response()->json($empleados);
     }
 
-    public function store(Request $request, Area $area){
+    /*public function store(Request $request, Area $area){
 
         $request->validate([
             'nombres'=>'required|string',
@@ -33,10 +33,12 @@ class EmpleadoController extends Controller
 
         return response()->json(['message' => 'Empleado creado correctamente', 201]);
 
-    }
+    }*/
 
-    public function empleadosBusquedaNombre($nombre){
+    public function empleadosBusquedaNombre(Request $request){
         try{
+            $nombre = $request->input('nombres');
+
             $empleados = Empleado::where('nombres', 'LIKE', "%$nombre%")->get();
             return response()->json($empleados);
         }catch(\Exception $e){
@@ -46,12 +48,6 @@ class EmpleadoController extends Controller
 
     public function actualizarEmpleados(Request $request){
         try {
-
-            $request->validate([
-                'nombres' => 'required|string',
-                'apellidos' => 'required|string',
-                'cargo' => 'required|string',
-            ]);
 
             $idEmpleado =  $request->input('id');
             $empleado = Empleado::findOrFail($idEmpleado);
@@ -63,8 +59,12 @@ class EmpleadoController extends Controller
             $empleado->nombres = $request->input('nombres');
             $empleado->apellidos = $request->input('apellidos');
             $empleado->cargo = $request->input('cargo');
-            $empleado->correo = $request->input('correo');
+            $empleado->email = $request->input('email');
+            $empleado->area_id = $request->input('area_id');
+            $empleado->dui = $request->input('dui');
+            $empleado->horario_id=$request->input('horario_id');
             $empleado->save();
+
 
 
             // Retornar una respuesta JSON con los datos actualizados
@@ -76,13 +76,29 @@ class EmpleadoController extends Controller
 
     public function crearEmpleado(Request $request){
         try {
+
+            $request->validate([
+                'nombres'=>'required|string',
+                'apellidos'=>'required|string',
+                'cargo' => 'required|string',
+                'email' => 'required|email|unique:empleados',
+                'area_id' =>  'required|exists:areas,id',
+                'email' => 'required|string',
+                'horario_id'=> 'required|exists:horarios,id',
+                'dui'=> 'required|string'
+            ]);
+
+
             $empleado = new Empleado();
             $empleado->nombres = $request->input('nombres');
             $empleado->apellidos = $request->input('apellidos');
             $empleado->cargo = $request->input('cargo');
-            $empleado->correo = $request->input('correo');
+            $empleado->email = $request->input('email');
             $empleado->area_id = $request->input('area_id');
+            $empleado->dui = $request->input('dui');
+            $empleado->horario_id=$request->input('horario_id');
             $empleado->save();
+
 
             return response()->json(['message' => 'Empleado creado con éxito', 'empleado' => $empleado,200]);
         } catch (\Exception $e) {
@@ -92,8 +108,10 @@ class EmpleadoController extends Controller
     }
 
 
-    public function eliminarEmpleados($id){
+    public function eliminarEmpleados(Request $request){
         try {
+            $id = $request->input('id');
+
             $empleados = Empleado::findOrFail($id);
             $empleados->delete();
 
@@ -102,4 +120,5 @@ class EmpleadoController extends Controller
             return response()->json(['message' => 'Error al eliminar el registro'], 500);
         }
     }
+
 }
