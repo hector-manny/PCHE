@@ -2250,7 +2250,7 @@ var render = function render() {
     staticStyle: {
       "margin-bottom": "3%"
     }
-  }, [_vm._v("ACTIVACION DE USUARIO")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("ACTIVACIÓN DE USUARIO")]), _vm._v(" "), _c("div", {
     staticClass: "row d-flex justify-content-center",
     staticStyle: {
       "margin-bottom": "2%"
