@@ -16,14 +16,14 @@ class CreateHoraExtraTable extends Migration
         Schema::create('horas_extra', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_empleado');
-            $table->string('lunes');
-            $table->string('martes');
-            $table->string('miercoles');
-            $table->string('jueves');
-            $table->string('viernes');
-            $table->string('sabado');
-            $table->string('domingo');
-            $table->string('total');
+            $table->integer('lunes');
+            $table->integer('martes');
+            $table->integer('miercoles');
+            $table->integer('jueves');
+            $table->integer('viernes');
+            $table->integer('sabado');
+            $table->integer('domingo');
+            $table->integer('total');
             $table->timestamps();
 
             $table->foreign('id_empleado')->references('id')->on('empleados');
