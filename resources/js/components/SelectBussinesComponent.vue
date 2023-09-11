@@ -19,7 +19,7 @@
             class="col-9 form-control"
             style="height: 50px"
           >
-            <option value="">Seleccione La empresa</option>
+            <option value="">Seleccione la empresa</option>
             <option v-for="empresa in empresas" :key="empresa.id" :value="empresa.id">
               {{ empresa.id }} - {{ empresa.nombre }}
             </option>
